@@ -1,103 +1,106 @@
-import Image from "next/image";
+import { ServiceCard } from "@/components/ServiceCard";
+import { Hero } from "@/components/Hero";
+import { Testimonials } from "@/components/Testimonials";
+import { WorkShowcase } from "@/components/WorkShowcase";
+import { Globe, Code, Smartphone, Camera, BarChart2, ShoppingCart, PenTool, Mail, Server, Users } from "lucide-react";
+import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <main className="min-h-screen bg-white">
+      <Navbar/>
+      <Hero />
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-[#FB2056]/10 text-[#FB2056] mb-4">
+              What We Offer
+            </span>
+            <h2 className="text-4xl font-bold mb-4">Our Premium Services</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Comprehensive digital solutions tailored to your business needs
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <ServiceCard 
+              title="Web Development" 
+              description="Modern, responsive websites built with Next.js, React, and Tailwind CSS."
+              icon={<Globe className="w-8 h-8" />}
+              href="/services/web-development"
+              color="#FB2056"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <ServiceCard 
+              title="Mobile Apps" 
+              description="Cross-platform mobile applications for iOS and Android."
+              icon={<Smartphone className="w-8 h-8" />}
+              href="/services/mobile-apps"
+              color="#4F46E5"
+            />
+            <ServiceCard 
+              title="UI/UX Design" 
+              description="Beautiful interfaces with exceptional user experience."
+              icon={<PenTool className="w-8 h-8" />}
+              href="/services/ui-ux-design"
+              color="#10B981"
+            />
+            <ServiceCard 
+              title="Video Production" 
+              description="Professional video editing and motion graphics."
+              icon={<Camera className="w-8 h-8" />}
+              href="/services/video-production"
+              color="#F59E0B"
+            />
+            <ServiceCard 
+              title="SEO Optimization" 
+              description="Boost your search rankings and organic traffic."
+              icon={<BarChart2 className="w-8 h-8" />}
+              href="/services/seo"
+              color="#3B82F6"
+            />
+            <ServiceCard 
+              title="E-commerce" 
+              description="Complete online store solutions."
+              icon={<ShoppingCart className="w-8 h-8" />}
+              href="/services/ecommerce"
+              color="#EC4899"
+            />
+            <ServiceCard 
+              title="Email Marketing" 
+              description="Convert subscribers into customers."
+              icon={<Mail className="w-8 h-8" />}
+              href="/services/email-marketing"
+              color="#8B5CF6"
+            />
+            <ServiceCard 
+              title="Social Media" 
+              description="Build your brand across platforms."
+              icon={<Users className="w-8 h-8" />}
+              href="/services/social-media"
+              color="#06B6D4"
+            />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <WorkShowcase />
+      <Testimonials />
+      <section className="py-20 bg-[#FB2056] text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Let's create something amazing together. Get in touch today!
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <button className="bg-white text-[#FB2056] px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+              Get a Free Quote
+            </button>
+            <button className="bg-transparent border-2 border-white px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition-colors">
+              View Case Studies
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
