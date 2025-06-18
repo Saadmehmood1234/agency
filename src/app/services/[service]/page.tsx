@@ -1,19 +1,24 @@
-"use client"
-import { notFound } from 'next/navigation'
-import { services } from '@/lib/constants'
-import { Check, ArrowRight, BarChart2, Sparkles, Target, Shield, Zap, Users } from 'lucide-react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+"use client";
+import { notFound } from "next/navigation";
+import { services } from "@/lib/constants";
+import {
+  Check,
+  ArrowRight,
+  BarChart2,
+  Sparkles,
+  Target,
+  Shield,
+  Zap,
+  Users,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
-interface ServicePageProps {
-  params: {
-    service: string
-  }
-}
-
-export default function ServiceDetailPage({ params }: ServicePageProps) {
-  const service = services.find((s) => s.slug === params.service)
-  if (!service) return notFound()
+export default function ServiceDetailPage() {
+  const { service } = useParams();
+  const serviceProps = services.find((s) => s.slug === service);
+  if (!serviceProps) return notFound();
 
   const featureIcons = [
     <Sparkles key="sparkles" className="w-6 h-6" />,
@@ -22,7 +27,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
     <Zap key="zap" className="w-6 h-6" />,
     <Users key="users" className="w-6 h-6" />,
     <BarChart2 key="barchart" className="w-6 h-6" />,
-  ]
+  ];
 
   const benefits = [
     "Tailored to your specific business goals",
@@ -30,8 +35,8 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
     "Transparent communication throughout",
     "Measurable results and ROI tracking",
     "Dedicated project management",
-    "Ongoing support and maintenance"
-  ]
+    "Ongoing support and maintenance",
+  ];
 
   return (
     <div className="bg-white">
@@ -41,22 +46,23 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
           <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
         </div>
-        
+
         <div className="container px-6 mx-auto relative">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
             <span className="inline-block px-4 py-2 mb-6 text-sm font-medium rounded-full bg-white/20 backdrop-blur-sm">
-              {service.category}
+              {serviceProps.category}
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-serif">
-              {service.title} That <span className="text-white/90">Delivers Results</span>
+              {serviceProps.title} That{" "}
+              <span className="text-white/90">Delivers Results</span>
             </h1>
             <p className="text-xl opacity-90 max-w-3xl leading-relaxed">
-              {service.longDescription}
+              {serviceProps.longDescription}
             </p>
           </motion.div>
         </div>
@@ -66,15 +72,17 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
       <div className="py-20 container px-6 mx-auto">
         <div className="max-w-5xl mx-auto">
           {/* Features Section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 mb-16 shadow-lg border border-gray-100"
           >
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 font-serif">How We Elevate Your Business</h2>
-            
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 font-serif">
+              How We Elevate Your Business
+            </h2>
+
             <div className="grid md:grid-cols-2 gap-10">
               <div>
                 <h3 className="font-semibold text-xl text-gray-800 mb-6 pb-2 border-b border-gray-200 flex items-center gap-2">
@@ -82,8 +90,8 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                   What You'll Gain
                 </h3>
                 <ul className="space-y-4">
-                  {service.features.slice(0, 4).map((feature, i) => (
-                    <motion.li 
+                  {serviceProps.features.slice(0, 4).map((feature, i) => (
+                    <motion.li
                       key={i}
                       whileHover={{ x: 5 }}
                       className="flex items-start"
@@ -96,7 +104,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <h3 className="font-semibold text-xl text-gray-800 mb-6 pb-2 border-b border-gray-200 flex items-center gap-2">
                   <Shield className="w-5 h-5 text-[#FB2056]" />
@@ -104,7 +112,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                 </h3>
                 <ul className="space-y-4">
                   {benefits.slice(0, 4).map((benefit, i) => (
-                    <motion.li 
+                    <motion.li
                       key={i}
                       whileHover={{ x: 5 }}
                       className="flex items-start"
@@ -122,19 +130,19 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Process Section */}
           <div className="mb-20">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="text-3xl font-bold mb-12 text-center text-gray-900 font-serif"
             >
-              Our {service.title} Process
+              Our {serviceProps.title} Process
             </motion.h2>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {service.features.map((feature, i) => (
-                <motion.div 
+              {serviceProps.features.map((feature, i) => (
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -144,11 +152,16 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                   className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all"
                 >
                   <div className="bg-[#FB2056]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-5">
-                    {featureIcons[i] || <Check className="w-6 h-6 text-[#FB2056]" />}
+                    {featureIcons[i] || (
+                      <Check className="w-6 h-6 text-[#FB2056]" />
+                    )}
                   </div>
-                  <h3 className="font-semibold text-xl mb-3 text-gray-800">{feature}</h3>
+                  <h3 className="font-semibold text-xl mb-3 text-gray-800">
+                    {feature}
+                  </h3>
                   <p className="text-gray-600">
-                    We implement this through a customized workflow designed specifically for your business needs and objectives.
+                    We implement this through a customized workflow designed
+                    specifically for your business needs and objectives.
                   </p>
                 </motion.div>
               ))}
@@ -156,7 +169,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
 
           {/* CTA Section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -166,12 +179,15 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/20 blur-xl"></div>
             </div>
-            
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 relative z-10">Ready to Transform Your Business?</h3>
+
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 relative z-10">
+              Ready to Transform Your Business?
+            </h3>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto relative z-10">
-              Let's discuss how our {service.title} service can drive real results for you.
+              Let's discuss how our {serviceProps.title} service can drive real
+              results for you.
             </p>
-            
+
             <Link href="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -186,5 +202,5 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
