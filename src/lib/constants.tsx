@@ -8,6 +8,7 @@ import {
   PenTool,
   Server,
   Mail,
+  Database,
   Users,
   LucideIcon
 } from 'lucide-react';
@@ -193,5 +194,39 @@ export const services: Service[] = [  {
       "Performance analytics"
     ],
     icon: <Users className="w-10 h-10" />
-  }
+  },
+  {
+  id: 11,
+  title: "Customer Relationship Manager",
+  slug: "customer-relationship-manager",
+  description: "Centralize all customer interactions and data.",
+  longDescription: "Our CRM solution streamlines sales, service, and marketing with intelligent automation and detailed analytics.",
+  category: "Business Software",
+  features: [
+    "Contact management",
+    "Lead tracking",
+    "Sales pipeline",
+    "Email automation",
+    "Customer segmentation",
+    "Reporting dashboard"
+  ],
+  icon: <Users className="w-10 h-10" />
+},
+{
+  id: 12,
+  title: "Enterprise Resource Planner",
+  slug: "enterprise-resource-planner",
+  description: "Integrate all business processes in one system.",
+  longDescription: "Comprehensive ERP platform connecting finance, supply chain, operations, and human resources with real-time data.",
+  category: "Business Software",
+  features: [
+    "Financial management",
+    "Inventory control",
+    "Order processing",
+    "HR modules",
+    "Business intelligence",
+    "Custom reporting"
+  ],
+  icon: <Database className="w-10 h-10" />
+}
 ];

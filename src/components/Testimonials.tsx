@@ -43,72 +43,84 @@ export function Testimonials() {
   };
 
   return (
-    <section className="py-20 bg-gray-50/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block text-[var(--primary)] font-medium mb-4">
-              Client Testimonials
-            </span>
-            <h2 className="text-4xl font-bold mb-4">Trusted by industry leaders</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our clients have to say about working with us.
-            </p>
-          </motion.div>
-        </div>
-
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+   <section className="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+  <div className="container mx-auto px-4">
+    {/* Header */}
+    <div className="text-center max-w-2xl mx-auto mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="text-sm uppercase tracking-wide font-semibold text-[#FB2056] bg-[#FB2056]/10 px-4 py-1 rounded-full">
+          Client Testimonials
+        </span>
+        <h2 className="text-4xl md:text-5xl font-extrabold mt-4 mb-4 text-gray-900">
+          Words from Our Happy Clients
+        </h2>
+        <p className="text-lg text-gray-600">
+          We’ve had the pleasure of working with amazing people. Here’s what they’re saying.
+        </p>
+      </motion.div>
+    </div>
+    <motion.div
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      {testimonials.map((testimonial) => (
+        <motion.div
+          key={testimonial.id}
+          className="bg-white rounded-3xl shadow-lg p-8 relative group transition hover:-translate-y-1"
+          variants={item}
         >
-          {testimonials.map((testimonial) => (
-            <motion.div 
-              key={testimonial.id} 
-              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group"
-              variants={item}
-              whileHover={{ y: -5 }}
-            >
-              <div className="text-[var(--primary)] mb-6">
-                <Quote className="w-10 h-10 opacity-80 group-hover:opacity-100 transition-opacity" />
+          <Quote className="absolute top-6 left-6 w-10 h-10 text-[#FB2056]/20 group-hover:text-[#FB2056]/40 transition" />
+          <p className="text-gray-700 text-lg mb-8 mt-10 relative z-10 leading-relaxed">
+            "{testimonial.content}"
+          </p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <img
+                src={`https://i.pravatar.cc/80?u=${testimonial.id}`}
+                alt={testimonial.name}
+                className="w-12 h-12 rounded-full object-cover border border-gray-200"
+              />
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900">{testimonial.name}</h4>
+                <p className="text-sm text-gray-500">{testimonial.role}</p>
               </div>
-              <p className="text-gray-700 mb-8 text-lg leading-relaxed">"{testimonial.content}"</p>
-              <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                  <p className="text-gray-500">{testimonial.role}</p>
-                </div>
-                <div className="flex items-center space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      size={16}
-                      strokeWidth={1.5}
-                      className={i < testimonial.rating ? 'text-[var(--primary)] fill-[var(--primary)]' : 'text-gray-300'}
-                    />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+            </div>
+            <div className="flex items-center space-x-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  size={16}
+                  strokeWidth={1.5}
+                  className={
+                    i < testimonial.rating
+                      ? 'text-yellow-400 fill-yellow-400'
+                      : 'text-gray-300'
+                  }
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
+      ))}
+    </motion.div>
+    <div className="flex justify-center mt-14 gap-4">
+      <button className="p-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md transition">
+        <ChevronLeft className="w-5 h-5 text-gray-600" />
+      </button>
+      <button className="p-2 rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md transition">
+        <ChevronRight className="w-5 h-5 text-gray-600" />
+      </button>
+    </div>
+  </div>
+</section>
 
-        <div className="flex justify-center mt-12 gap-4">
-          <button className="p-2 rounded-full bg-white shadow-sm hover:shadow-md transition-all">
-            <ChevronLeft className="w-5 h-5 text-gray-600" />
-          </button>
-          <button className="p-2 rounded-full bg-white shadow-sm hover:shadow-md transition-all">
-            <ChevronRight className="w-5 h-5 text-gray-600" />
-          </button>
-        </div>
-      </div>
-    </section>
   );
 }

@@ -22,8 +22,13 @@ export function Navbar() {
       href: '/services',
       subItems: [
         { name: 'Web Development', href: '/services/web-development' },
-        { name: 'UI/UX Design', href: '/services/ui-ux-design' },
+        { name: 'SEO Services', href: '/services/seo-services' },
+        { name: 'Video Editing', href: '/services/video-editing' },
+        { name: 'Mobile App Development', href: '/services/mobile-app-development' },
+        { name: 'E-commerce Solutions', href: '/services/ecommerce-solutions' },
         { name: 'Digital Marketing', href: '/services/digital-marketing' },
+        { name: 'Enterprise Resource Planner', href: '/services/enterprise-resource-planner' },
+        { name: 'Customer Relationship Manager', href: '/services/customer-relationship-manager' },
       ]
     },
     { name: 'Portfolio', href: '/portfolio' },
@@ -32,23 +37,21 @@ export function Navbar() {
   ];
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white max-lg:bg-white py-4'}`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+  
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-[#FB2056] bg-clip-text text-transparent">
               DigitalApex
             </span>
           </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
                 <Link 
                   href={item.href}
-                  className="flex items-center px-3 py-2 text-gray-700 hover:text-indigo-600 transition-colors font-medium"
+                  className="flex items-center px-3 py-2 text-gray-700 hover:text-[#FB2056] transition-colors font-medium"
                 >
                   {item.name}
                   {item.subItems && <ChevronDown className="w-4 h-4 ml-1" />}
@@ -61,7 +64,7 @@ export function Navbar() {
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-[#FB2056]"
                         >
                           {subItem.name}
                         </Link>
@@ -73,14 +76,12 @@ export function Navbar() {
             ))}
             <Link 
               href="/get-started" 
-              className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-medium hover:from-indigo-700 hover:to-purple-700 transition-all shadow hover:shadow-md"
+              className="px-6 py-2 bg-[#FB2056] text-white rounded-lg font-medium hover:from-indigo-700 transition-all shadow hover:shadow-md"
             >
               Get Started
             </Link>
           </nav>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-indigo-600 focus:outline-none"
@@ -90,15 +91,14 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4">
+          <div className="md:hidden  mt-4 pb-4">
             <div className="space-y-2">
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     href={item.href}
-                    className="block px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg font-medium"
+                    className="block px-4 py-3 text-gray-700 hover:bg-i[#FB2056] rounded-lg font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
@@ -109,7 +109,7 @@ export function Navbar() {
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="block px-4 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg text-sm"
+                          className="block px-4 py-2 text-gray-600 hover:bg-indigo-50 hover:text-[#FB2056] rounded-lg text-sm"
                           onClick={() => setIsOpen(false)}
                         >
                           {subItem.name}
@@ -121,7 +121,7 @@ export function Navbar() {
               ))}
               <Link
                 href="/get-started"
-                className="block px-4 py-3 mt-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-medium text-center"
+                className="block px-4 py-3 mt-4 bg-[#FB2056] text-white rounded-lg font-medium text-center"
                 onClick={() => setIsOpen(false)}
               >
                 Get Started

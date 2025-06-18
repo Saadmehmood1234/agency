@@ -1,106 +1,179 @@
+"use client"
 import { notFound } from 'next/navigation';
 import { services } from '@/lib/constants';
-import { Check, ArrowRight, Calendar, Clock, BarChart, Settings, Users, Mail } from 'lucide-react';
-
+import { Check, ArrowRight, Calendar, Clock, BarChart, Settings, Users, Mail, Sparkles, Target, Shield, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 export default function ServiceDetailPage({
   params,
 }: {
   params: { service: string };
 }) {
   const service = services.find((s) => s.slug === params.service);
-  
   if (!service) return notFound();
 
-  // Icon mapping for features
   const featureIcons = [
-    <Calendar className="w-5 h-5" />,
-    <Clock className="w-5 h-5" />,
-    <BarChart className="w-5 h-5" />,
-    <Settings className="w-5 h-5" />,
-    <Users className="w-5 h-5" />,
-    <Mail className="w-5 h-5" />,
+    <Sparkles className="w-6 h-6" />,
+    <Target className="w-6 h-6" />,
+    <Shield className="w-6 h-6" />,
+    <Zap className="w-6 h-6" />,
+    <Users className="w-6 h-6" />,
+    <BarChart className="w-6 h-6" />,
+  ];
+
+  const benefits = [
+    "Tailored to your specific business goals",
+    "Cutting-edge technology solutions",
+    "Transparent communication throughout",
+    "Measurable results and ROI tracking",
+    "Dedicated project management",
+    "Ongoing support and maintenance"
   ];
 
   return (
     <div className="bg-white">
-      {/* Hero Header */}
-      <div className="bg-gradient-to-r from-[#FB2056] to-[#FF6B8B] py-20 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <span className="inline-block px-3 py-1 text-sm font-medium rounded-full bg-white/20 mb-4">
+
+      <div className="relative bg-gradient-to-br from-[#FB2056] to-[#FF8A9B] py-24 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
+        </div>
+        
+        <div className="container px-6 mx-auto relative">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-medium rounded-full bg-white/20 backdrop-blur-sm">
               {service.category}
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{service.title}</h1>
-            <p className="text-xl opacity-90 max-w-3xl">{service.longDescription}</p>
-          </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-serif">
+              {service.title} That <span className="text-white/90">Delivers Results</span>
+            </h1>
+            <p className="text-xl opacity-90 max-w-3xl leading-relaxed">
+              {service.longDescription}
+            </p>
+          </motion.div>
         </div>
       </div>
+      <div className="py-20 container px-6 mx-auto">
+        <div className="max-w-5xl mx-auto">
 
-      {/* Main Content */}
-      <div className="py-16 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Service Overview */}
-          <div className="bg-gray-50 rounded-xl p-8 mb-12 border border-gray-200">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Service Overview</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 mb-16 shadow-lg border border-gray-100"
+          >
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 font-serif">How We Elevate Your Business</h2>
+            
+            <div className="grid md:grid-cols-2 gap-10">
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Key Benefits</h3>
-                <ul className="space-y-3">
-                  {service.features.slice(0, 3).map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      <Check className="w-5 h-5 text-[#FB2056] mr-2 mt-0.5 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
+                <h3 className="font-semibold text-xl text-gray-800 mb-6 pb-2 border-b border-gray-200 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-[#FB2056]" />
+                  What You'll Gain
+                </h3>
+                <ul className="space-y-4">
+                  {service.features.slice(0, 4).map((feature, i) => (
+                    <motion.li 
+                      key={i}
+                      whileHover={{ x: 5 }}
+                      className="flex items-start"
+                    >
+                      <div className="bg-[#FB2056]/10 p-1 rounded-full mr-3">
+                        <Check className="w-5 h-5 text-[#FB2056]" />
+                      </div>
+                      <span className="text-gray-700">{feature}</span>
+                    </motion.li>
                   ))}
                 </ul>
               </div>
+              
               <div>
-                <h3 className="font-semibold text-gray-800 mb-3">Why Choose Us</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <Check className="w-5 h-5 text-[#FB2056] mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Industry-leading expertise</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="w-5 h-5 text-[#FB2056] mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Customized solutions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Check className="w-5 h-5 text-[#FB2056] mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Proven results</span>
-                  </li>
+                <h3 className="font-semibold text-xl text-gray-800 mb-6 pb-2 border-b border-gray-200 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-[#FB2056]" />
+                  Our Approach
+                </h3>
+                <ul className="space-y-4">
+                  {benefits.slice(0, 4).map((benefit, i) => (
+                    <motion.li 
+                      key={i}
+                      whileHover={{ x: 5 }}
+                      className="flex items-start"
+                    >
+                      <div className="bg-[#FB2056]/10 p-1 rounded-full mr-3">
+                        <Check className="w-5 h-5 text-[#FB2056]" />
+                      </div>
+                      <span className="text-gray-700">{benefit}</span>
+                    </motion.li>
+                  ))}
                 </ul>
               </div>
             </div>
-          </div>
-
-          {/* Detailed Features */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-gray-900">What We Offer</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+          </motion.div>
+          <div className="mb-20">
+            <motion.h2 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl font-bold mb-12 text-center text-gray-900 font-serif"
+            >
+              Our {service.title} Process
+            </motion.h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.features.map((feature, i) => (
-                <div key={i} className="bg-white p-6 rounded-lg border border-gray-200 hover:border-[#FB2056]/50 transition-colors">
-                  <div className="text-[#FB2056] mb-3">
-                    {featureIcons[i] || <Check className="w-5 h-5" />}
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition-all"
+                >
+                  <div className="bg-[#FB2056]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-5">
+                    {featureIcons[i] || <Check className="w-6 h-6 text-[#FB2056]" />}
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">{feature}</h3>
-                  <p className="text-gray-600">Detailed description of this feature and how it benefits your business.</p>
-                </div>
+                  <h3 className="font-semibold text-xl mb-3 text-gray-800">{feature}</h3>
+                  <p className="text-gray-600">
+                    We implement this through a customized workflow designed specifically for your business needs and objectives.
+                  </p>
+                </motion.div>
               ))}
             </div>
           </div>
-
-          {/* CTA Section */}
-          <div className="bg-[#FB2056]/5 border border-[#FB2056]/20 rounded-xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to get started?</h3>
-            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Contact us today to discuss how we can help with your {service.title} needs.
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-[#FB2056] to-[#FF6B8B] rounded-2xl p-10 text-center text-white overflow-hidden"
+          >
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/20 blur-xl"></div>
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 relative z-10">Ready to Transform Your Business?</h3>
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto relative z-10">
+              Let's discuss how our {service.title} service can drive real results for you.
             </p>
-            <button className="bg-[#FB2056] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#E01A4E] transition-colors inline-flex items-center">
-              Get a Free Consultation
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </button>
-          </div>
+            
+           <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white cursor-pointer text-[#FB2056] px-8 py-4 rounded-xl font-bold hover:shadow-lg transition-all shadow-md relative z-10 inline-flex items-center"
+            >
+              Schedule Your Free Strategy Call
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:animate-bounce" />
+            </motion.button>
+           </Link>
+          </motion.div>
         </div>
       </div>
     </div>
