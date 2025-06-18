@@ -37,9 +37,9 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-gray-900 my-4">
                 {service.title}
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {/* <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 {service.longDescription}
-              </p>
+              </p> */}
             </div>
             <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
               <div className="grid md:grid-cols-3 gap-0">

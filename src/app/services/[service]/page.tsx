@@ -40,7 +40,6 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-[#FB2056] to-[#FF8A9B] py-24 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
@@ -167,8 +166,6 @@ export default function ServiceDetailPage() {
               ))}
             </div>
           </div>
-
-          {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
