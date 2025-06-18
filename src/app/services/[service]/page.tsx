@@ -1,25 +1,28 @@
 "use client"
-import { notFound } from 'next/navigation';
-import { services } from '@/lib/constants';
-import { Check, ArrowRight, Calendar, Clock, BarChart, Settings, Users, Mail, Sparkles, Target, Shield, Zap } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-export default function ServiceDetailPage({
-  params,
-}: {
-  params: { service: string };
-}) {
-  const service = services.find((s) => s.slug === params.service);
-  if (!service) return notFound();
+import { notFound } from 'next/navigation'
+import { services } from '@/lib/constants'
+import { Check, ArrowRight, BarChart2, Sparkles, Target, Shield, Zap, Users } from 'lucide-react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+
+interface ServicePageProps {
+  params: {
+    service: string
+  }
+}
+
+export default function ServiceDetailPage({ params }: ServicePageProps) {
+  const service = services.find((s) => s.slug === params.service)
+  if (!service) return notFound()
 
   const featureIcons = [
-    <Sparkles className="w-6 h-6" />,
-    <Target className="w-6 h-6" />,
-    <Shield className="w-6 h-6" />,
-    <Zap className="w-6 h-6" />,
-    <Users className="w-6 h-6" />,
-    <BarChart className="w-6 h-6" />,
-  ];
+    <Sparkles key="sparkles" className="w-6 h-6" />,
+    <Target key="target" className="w-6 h-6" />,
+    <Shield key="shield" className="w-6 h-6" />,
+    <Zap key="zap" className="w-6 h-6" />,
+    <Users key="users" className="w-6 h-6" />,
+    <BarChart2 key="barchart" className="w-6 h-6" />,
+  ]
 
   const benefits = [
     "Tailored to your specific business goals",
@@ -28,11 +31,11 @@ export default function ServiceDetailPage({
     "Measurable results and ROI tracking",
     "Dedicated project management",
     "Ongoing support and maintenance"
-  ];
+  ]
 
   return (
     <div className="bg-white">
-
+      {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-[#FB2056] to-[#FF8A9B] py-24 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
@@ -58,9 +61,11 @@ export default function ServiceDetailPage({
           </motion.div>
         </div>
       </div>
+
+      {/* Main Content */}
       <div className="py-20 container px-6 mx-auto">
         <div className="max-w-5xl mx-auto">
-
+          {/* Features Section */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -114,6 +119,8 @@ export default function ServiceDetailPage({
               </div>
             </div>
           </motion.div>
+
+          {/* Process Section */}
           <div className="mb-20">
             <motion.h2 
               initial={{ opacity: 0 }}
@@ -147,6 +154,8 @@ export default function ServiceDetailPage({
               ))}
             </div>
           </div>
+
+          {/* CTA Section */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -163,19 +172,19 @@ export default function ServiceDetailPage({
               Let's discuss how our {service.title} service can drive real results for you.
             </p>
             
-           <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white cursor-pointer text-[#FB2056] px-8 py-4 rounded-xl font-bold hover:shadow-lg transition-all shadow-md relative z-10 inline-flex items-center"
-            >
-              Schedule Your Free Strategy Call
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:animate-bounce" />
-            </motion.button>
-           </Link>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-[#FB2056] px-8 py-4 rounded-xl font-bold hover:shadow-lg transition-all shadow-md relative z-10 inline-flex items-center"
+              >
+                Schedule Your Free Strategy Call
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>
     </div>
-  );
+  )
 }
