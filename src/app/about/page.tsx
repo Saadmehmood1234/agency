@@ -5,9 +5,15 @@ import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
-    <section className="bg-white text-gray-800 min-h-screen py-20 px-4">
+    <section
+      className=" text-gray-800 min-h-screen py-20 px-4"
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+      }}
+    >
       <div className="container mx-auto max-w-6xl">
-        {/* Header */}
         <div className="text-center mb-16">
           <motion.h1
             className="text-4xl md:text-5xl font-bold mb-4 text-[#FB2056]"

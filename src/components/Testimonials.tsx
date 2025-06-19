@@ -43,7 +43,7 @@ export function Testimonials() {
   };
 
   return (
-   <section className="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+   <section className="py-24 ">
   <div className="container mx-auto px-4">
     {/* Header */}
     <div className="text-center max-w-2xl mx-auto mb-16">

@@ -64,7 +64,7 @@ export function WorkShowcase() {
   };
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 ">
       <div className="container px-5 mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-8">
           <div className="max-w-2xl">

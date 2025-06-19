@@ -5,14 +5,21 @@ import { motion } from "framer-motion";
 
 export default function ServicesPage() {
   return (
-    <div className="relative py-20 overflow-hidden">
+    <div
+      className="relative py-20 overflow-hidden"
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+      }}
+    >
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-pink-100/30 blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-indigo-100/30 blur-3xl"></div>
       </div>
 
       <div className="container px-5 mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -22,13 +29,17 @@ export default function ServicesPage() {
             What We Do Best
           </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">
-            Services That <span className="text-transparent bg-clip-text bg-[#FB2056]">Spark Growth</span>
+            Services That{" "}
+            <span className="text-transparent bg-clip-text bg-[#FB2056]">
+              Spark Growth
+            </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We don't just deliver services—we craft digital experiences that move the needle for your business.
+            We don't just deliver services—we craft digital experiences that
+            move the needle for your business.
           </p>
         </motion.div>
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           animate="show"
@@ -37,9 +48,9 @@ export default function ServicesPage() {
             show: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.1
-              }
-            }
+                staggerChildren: 0.1,
+              },
+            },
           }}
         >
           {services.map((service, index) => (
@@ -47,12 +58,12 @@ export default function ServicesPage() {
               key={service.slug}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                show: { opacity: 1, y: 0 }
+                show: { opacity: 1, y: 0 },
               }}
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <ServiceCard 
+              <ServiceCard
                 title={service.title}
                 description={service.description}
                 icon={service.icon}

@@ -39,7 +39,13 @@ export default function ServiceDetailPage() {
   ];
 
   return (
-    <div className="bg-white">
+    <div
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+      }}
+    >
       <div
         className="relative py-24 text-white overflow-hidden"
         style={{

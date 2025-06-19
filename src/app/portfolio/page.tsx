@@ -7,9 +7,11 @@ const projects = [
   {
     id: 1,
     title: "E-commerce Platform",
-    description: "A custom online store with advanced product filtering and checkout",
+    description:
+      "A custom online store with advanced product filtering and checkout",
     category: "Web Development",
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
     link: "#",
     liveUrl: "#",
   },
@@ -18,7 +20,8 @@ const projects = [
     title: "Mobile App UI",
     description: "Fitness tracking application with custom dashboard",
     category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
     link: "#",
     liveUrl: "#",
   },
@@ -27,7 +30,8 @@ const projects = [
     title: "Restaurant Website",
     description: "Modern responsive website with online reservations",
     category: "Web Development",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     link: "#",
   },
   {
@@ -35,31 +39,40 @@ const projects = [
     title: "Product Packaging",
     description: "Eco-friendly packaging design for skincare line",
     category: "Graphic Design",
-    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
     link: "#",
   },
 ];
 
 export default function PortfolioPage() {
   return (
-    <section className="min-h-screen py-20 bg-gray-50">
+    <section
+      className="min-h-screen py-20"
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+      }}
+    >
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold text-[#FB2056] mb-4"
-            initial={{ opacity: 0, y: 20 }} 
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             Our Portfolio
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-600 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Explore our diverse range of projects across different industries and disciplines.
+            Explore our diverse range of projects across different industries
+            and disciplines.
           </motion.p>
         </div>
 
@@ -93,8 +106,12 @@ export default function PortfolioPage() {
               <div className="p-6">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">{project.title}</h3>
-                    <p className="text-gray-500 text-sm md:hidden">{project.description}</p>
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm md:hidden">
+                      {project.description}
+                    </p>
                   </div>
                   <div className="flex space-x-2">
                     {project.liveUrl && (

@@ -59,12 +59,21 @@ export function ContactPage() {
     }
   };
   return (
-    <div className="bg-white">
-      <section className="relative py-28  overflow-hidden" style={{
+    <div
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+      }}
+    >
+      <section
+        className="relative py-28  overflow-hidden"
+        style={{
           backgroundColor: "#fb2056",
           backgroundImage:
             'url("https://www.transparenttextures.com/patterns/buried.png")',
-        }}>
+        }}
+      >
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>

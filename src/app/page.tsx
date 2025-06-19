@@ -33,7 +33,7 @@ export default function Home() {
       }}
     >
       <Hero />
-      <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="relative py-20 ">
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50/50 to-transparent -z-10" />
         <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-teal-100/20 blur-3xl -z-10" />
         {services.map((service) => (
