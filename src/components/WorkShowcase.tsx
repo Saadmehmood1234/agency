@@ -81,7 +81,7 @@ export function WorkShowcase() {
             </p>
           </div>
           <Link
-            href="/work"
+            href="/portfolio"
             className="group flex items-center gap-3 text-lg font-medium text-[#FB2056] transition-colors"
           >
             See everything we've made
@@ -144,7 +144,7 @@ export function WorkShowcase() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                   <div className="transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
-                    <span className="inline-block px-3 py-1 rounded-full bg-white text-gray-900 text-xs font-medium mb-3">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#FB2056] text-white text-xs font-medium mb-3">
                       {project.category}
                     </span>
                     <h3 className="text-white text-2xl font-bold mb-3">
@@ -156,7 +156,7 @@ export function WorkShowcase() {
                     <div className="flex gap-3">
                       <Link
                         href={project.link}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-colors text-sm"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#FB2056] text-white rounded-full hover:bg-[#FB2140] transition-colors text-sm"
                       >
                         Case study
                         <ExternalLink className="w-4 h-4" />

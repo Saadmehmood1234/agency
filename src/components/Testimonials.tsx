@@ -13,7 +13,7 @@ export function Testimonials() {
     },
     {
       id: 2,
-      name: "Michael Chen",
+      name: "Saad Mehmood",
       role: "CEO, StartupHub",
       content: "The SEO strategy they implemented helped us rank #1 for our main keywords. Exceptional results!",
       rating: 5

@@ -75,7 +75,7 @@ export function Navbar() {
               </div>
             ))}
             <Link 
-              href="/get-started" 
+              href="/contact" 
               className="px-6 py-2 bg-[#FB2056] text-white rounded-lg font-medium hover:from-indigo-700 transition-all shadow hover:shadow-md"
             >
               Get Started

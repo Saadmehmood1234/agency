@@ -19,10 +19,52 @@ import {
   Github,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { set, useForm } from "react-hook-form";
+import { connectMe } from "@/app/actions/contact.actions";
+import Link from "next/link";
+type FormInputs = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 export function ContactPage() {
+  const [loading, setLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormInputs>();
+  const onSubmit = async (data: FormInputs) => {
+    try {
+      setLoading(true);
+      const res = await connectMe(data);
+
+      if (res.success) {
+        toast.success("Message sent successfully!");
+        reset();
+      } else {
+        toast.error("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to send message. Please try again later.");
+      return;
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="bg-white">
-      <section className="relative py-28 bg-gradient-to-br from-[#FB2056] to-[#FF8A9B] overflow-hidden">
+      <section className="relative py-28  overflow-hidden" style={{
+          backgroundColor: "#fb2056",
+          backgroundImage:
+            'url("https://www.transparenttextures.com/patterns/buried.png")',
+        }}>
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
@@ -148,7 +190,7 @@ export function ContactPage() {
               </h2>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -160,6 +202,7 @@ export function ContactPage() {
                   <input
                     type="text"
                     id="name"
+                    {...register("name", { required: true })}
                     required
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                     placeholder="John Doe"
@@ -175,6 +218,7 @@ export function ContactPage() {
                   <input
                     type="email"
                     id="email"
+                    {...register("email", { required: true })}
                     required
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                     placeholder="john@example.com"
@@ -192,6 +236,7 @@ export function ContactPage() {
                 <div className="relative">
                   <select
                     id="subject"
+                    {...register("subject", { required: true })}
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all appearance-none"
                   >
                     <option>General Inquiry</option>
@@ -216,6 +261,7 @@ export function ContactPage() {
                 <textarea
                   id="message"
                   rows={5}
+                  {...register("message", { required: true })}
                   required
                   className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                   placeholder="Tell us about your project or inquiry..."
@@ -229,7 +275,7 @@ export function ContactPage() {
                 className="w-full py-4 bg-gradient-to-r from-[#FB2056] to-[#FB2056] text-white font-bold rounded-xl shadow hover:shadow-lg transition-all flex items-center justify-center gap-3"
               >
                 <Send className="w-5 h-5" />
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </motion.button>
             </form>
           </motion.div>
@@ -319,8 +365,7 @@ export function ContactPage() {
                     color: "hover:bg-pink-50 border-pink-100",
                     handle: "@yourhandle",
                   },
-                
-                  
+
                   {
                     name: "GitHub",
                     icon: <Github className="w-6 h-6 text-gray-700" />,

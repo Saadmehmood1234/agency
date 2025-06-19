@@ -40,7 +40,14 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="bg-white">
-      <div className="relative bg-gradient-to-br from-[#FB2056] to-[#FF8A9B] py-24 text-white overflow-hidden">
+      <div
+        className="relative py-24 text-white overflow-hidden"
+        style={{
+          backgroundColor: "#fb2056",
+          backgroundImage:
+            'url("https://www.transparenttextures.com/patterns/buried.png")',
+        }}
+      >
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
@@ -171,7 +178,12 @@ export default function ServiceDetailPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-[#FB2056] to-[#FF6B8B] rounded-2xl p-10 text-center text-white overflow-hidden"
+            className=" rounded-2xl p-10 text-center text-white overflow-hidden"
+            style={{
+              backgroundColor: "#fb2056",
+              backgroundImage:
+                'url("https://www.transparenttextures.com/patterns/buried.png")',
+            }}
           >
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/20 blur-xl"></div>

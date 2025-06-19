@@ -6,6 +6,7 @@ import { WorkShowcase } from "@/components/WorkShowcase";
 import { motion } from "framer-motion";
 import React from "react";
 import { services } from "@/lib/constants";
+import Link from "next/link";
 import { Search, TrendingUp } from "lucide-react";
 import {
   Globe,
@@ -23,7 +24,14 @@ import { Navbar } from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main
+      className="min-h-screen "
+      style={{
+        backgroundColor: "#ffffff",
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+      }}
+    >
       <Hero />
       <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50/50 to-transparent -z-10" />
@@ -43,7 +51,14 @@ export default function Home() {
             </div>
             <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
               <div className="grid md:grid-cols-3 gap-0">
-                <div className="p-8 md:p-10 bg-[#FB2056] text-white">
+                <div
+                  className="p-8 md:p-10 bg-[#FB2056] text-white"
+                  style={{
+                    backgroundColor: "#fb2056",
+                    backgroundImage:
+                      'url("https://www.transparenttextures.com/patterns/buried.png")',
+                  }}
+                >
                   <div className="flex items-center justify-center w-16 h-16 mb-6 bg-white/10 rounded-xl backdrop-blur-sm">
                     {React.cloneElement(service.icon, {})}
                   </div>
@@ -51,9 +66,11 @@ export default function Home() {
                   <p className="text-blue-100 mb-6">{service.description}</p>
 
                   <div className="flex items-center gap-3 group cursor-pointer">
-                    <span className="font-medium text-blue-50 group-hover:text-white transition-colors">
-                      Get started
-                    </span>
+                    <Link href={`/services/${service.slug}`}>
+                      <span className="font-medium text-blue-50 group-hover:text-white transition-colors">
+                        Get started
+                      </span>
+                    </Link>
                     <svg
                       width="18"
                       height="18"
@@ -139,7 +156,14 @@ export default function Home() {
       </section>
       <WorkShowcase />
       <Testimonials />
-      <section className="py-24 bg-[#FB2056] text-white relative overflow-hidden">
+      <section
+        className="py-24  text-white relative overflow-hidden"
+        style={{
+          backgroundColor: "#fb2056",
+          backgroundImage:
+            'url("https://www.transparenttextures.com/patterns/buried.png")',
+        }}
+      >
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/dark-mosaic.png')]"></div>
 
         <div className="container mx-auto px-6 text-center relative z-10">
@@ -151,14 +175,14 @@ export default function Home() {
             let’s talk strategy, design, and innovation.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="px-8 py-3 bg-white text-[#FB2056] text-lg font-semibold rounded-full shadow-lg hover:bg-gray-100 transition-colors">
               Get a Free Quote
             </button>
             <button className="px-8 py-3 border-2 border-white text-white text-lg font-semibold rounded-full hover:bg-white/10 transition-colors">
               View Case Studies
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
     </main>
