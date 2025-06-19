@@ -6,7 +6,7 @@ export function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Ritik Koli",
       role: "Marketing Director, TechCorp",
       content: "Their web development team transformed our online presence. Our traffic increased by 300% within 3 months!",
       rating: 5
@@ -20,7 +20,7 @@ export function Testimonials() {
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
+      name: "Kamlesh Kumar",
       role: "Creative Director, BrandWorks",
       content: "Their video editing team brought our vision to life with stunning animations and effects. Highly recommend!",
       rating: 4
@@ -45,7 +45,6 @@ export function Testimonials() {
   return (
    <section className="py-24 ">
   <div className="container mx-auto px-4">
-    {/* Header */}
     <div className="text-center max-w-2xl mx-auto mb-16">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
