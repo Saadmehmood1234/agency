@@ -36,22 +36,23 @@ export default function Home() {
       <section className="relative py-20 ">
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-blue-50/50 to-transparent -z-10" />
         <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-teal-100/20 blur-3xl -z-10" />
-        {services.map((service) => (
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto text-center mb-16">
-              {/* <span className="inline-block mb-4 bg-blue-100 text-[#FB2056] text-sm font-medium px-4 py-1.5 rounded-full uppercase tracking-wider">
-                {service.category}
-              </span> */}
+        {services.map((service) => (  
+          <div key={service.slug} className="container mx-auto px-6">
+            <div
+              key={`${service.slug}-header`}
+              className="max-w-4xl mx-auto text-center mb-16"
+            >
               <h2 className="text-4xl font-bold text-gray-900 my-4">
                 {service.title}
               </h2>
-              {/* <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                {service.longDescription}
-              </p> */}
             </div>
-            <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+            <div
+              key={`${service.slug}-card`}
+              className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="grid md:grid-cols-3 gap-0">
                 <div
+                  key={`${service.slug}-left`}
                   className="p-8 md:p-10 bg-[#FB2056] text-white"
                   style={{
                     backgroundColor: "#fb2056",
@@ -59,19 +60,38 @@ export default function Home() {
                       'url("https://www.transparenttextures.com/patterns/buried.png")',
                   }}
                 >
-                  <div className="flex items-center justify-center w-16 h-16 mb-6 bg-white/10 rounded-xl backdrop-blur-sm">
-                    {React.cloneElement(service.icon, {})}
+                  <div
+                    key={`${service.slug}-icon`}
+                    className="flex items-center justify-center w-16 h-16 mb-6 bg-white/10 rounded-xl backdrop-blur-sm"
+                  >
+                    {React.cloneElement(service.icon, {
+                      key: `${service.slug}-icon-clone`,
+                    })}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-blue-100 mb-6">{service.description}</p>
+                  <h3
+                    key={`${service.slug}-title`}
+                    className="text-2xl font-bold mb-4"
+                  >
+                    {service.title}
+                  </h3>
+                  <p
+                    key={`${service.slug}-desc`}
+                    className="text-blue-100 mb-6"
+                  >
+                    {service.description}
+                  </p>
 
-                  <div className="flex items-center gap-3 group cursor-pointer">
+                  <div
+                    key={`${service.slug}-link`}
+                    className="flex items-center gap-3 group cursor-pointer"
+                  >
                     <Link href={`/services/${service.slug}`}>
                       <span className="font-medium text-blue-50 group-hover:text-white transition-colors">
                         Get started
                       </span>
                     </Link>
                     <svg
+                      key={`${service.slug}-arrow`}
                       width="18"
                       height="18"
                       viewBox="0 0 18 18"
@@ -88,14 +108,27 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-                <div className="p-8 md:p-10 border-t md:border-t-0 md:border-l border-gray-200/50">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-6">
+                <div
+                  key={`${service.slug}-middle`}
+                  className="p-8 md:p-10 border-t md:border-t-0 md:border-l border-gray-200/50"
+                >
+                  <h4
+                    key={`${service.slug}-features-title`}
+                    className="text-lg font-semibold text-gray-900 mb-6"
+                  >
                     Key Features
                   </h4>
-                  <ul className="space-y-4">
+                  <ul
+                    key={`${service.slug}-features-list`}
+                    className="space-y-4"
+                  >
                     {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
+                      <li
+                        key={`${service.slug}-feature-${index}`}
+                        className="flex items-start"
+                      >
                         <svg
+                          key={`${service.slug}-feature-icon-${index}`}
                           className="flex-shrink-0 w-5 h-5 text-[#FB2056] mt-0.5 mr-3"
                           viewBox="0 0 20 20"
                           fill="currentColor"
@@ -106,25 +139,54 @@ export default function Home() {
                             clipRule="evenodd"
                           />
                         </svg>
-                        <span className="text-gray-700">{feature}</span>
+                        <span
+                          key={`${service.slug}-feature-text-${index}`}
+                          className="text-gray-700"
+                        >
+                          {feature}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="hidden md:block relative bg-gray-50 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 to-teal-100/30"></div>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="relative w-64 h-64">
-                      <div className="absolute top-0 left-0 w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center">
+                <div
+                  key={`${service.slug}-right`}
+                  className="hidden md:block relative bg-gray-50 overflow-hidden"
+                >
+                  <div
+                    key={`${service.slug}-gradient`}
+                    className="absolute inset-0 bg-gradient-to-br from-blue-100/30 to-teal-100/30"
+                  ></div>
+                  <div
+                    key={`${service.slug}-icons-container`}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  >
+                    <div
+                      key={`${service.slug}-icons-wrapper`}
+                      className="relative w-64 h-64"
+                    >
+                      <div
+                        key={`${service.slug}-icon1`}
+                        className="absolute top-0 left-0 w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center"
+                      >
                         <BarChart2 className="w-6 h-6 text-[#FB2056]" />
                       </div>
-                      <div className="absolute top-8 right-8 w-20 h-20 bg-white rounded-lg shadow-md flex items-center justify-center">
+                      <div
+                        key={`${service.slug}-icon2`}
+                        className="absolute top-8 right-8 w-20 h-20 bg-white rounded-lg shadow-md flex items-center justify-center"
+                      >
                         <Search className="w-7 h-7 text-[#FB2056]" />
                       </div>
-                      <div className="absolute bottom-8 left-8 w-24 h-24 bg-white rounded-xl shadow-lg flex items-center justify-center">
+                      <div
+                        key={`${service.slug}-icon3`}
+                        className="absolute bottom-8 left-8 w-24 h-24 bg-white rounded-xl shadow-lg flex items-center justify-center"
+                      >
                         <TrendingUp className="w-8 h-8 text-[#FB2056]" />
                       </div>
-                      <div className="absolute bottom-12 right-12 w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center">
+                      <div
+                        key={`${service.slug}-icon4`}
+                        className="absolute bottom-12 right-12 w-16 h-16 bg-white rounded-lg shadow-md flex items-center justify-center"
+                      >
                         <Globe className="w-6 h-6 text-[#FB2056]" />
                       </div>
                     </div>
@@ -132,25 +194,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* <div className="mt-16 text-center">
-            <p className="text-gray-600 mb-6">
-              Ready to dominate search rankings?
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/contact"
-                className="px-8 py-3.5 bg-[#FB2056] hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg"
-              >
-                Free SEO Audit
-              </a>
-              <a
-                href="/pricing"
-                className="px-8 py-3.5 bg-white text-gray-700 font-medium rounded-lg border border-gray-300 hover:border-gray-400 transition-colors shadow-sm hover:shadow-md"
-              >
-                See Pricing
-              </a>
-            </div>
-          </div> */}
           </div>
         ))}
       </section>

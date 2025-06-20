@@ -1,49 +1,7 @@
 "use client";
-
+import { projects } from "@/lib/projects";
 import { Eye, ExternalLink, Github } from "lucide-react";
 import { motion } from "framer-motion";
-
-const projects = [
-  {
-    id: 1,
-    title: "E-commerce Platform",
-    description:
-      "A custom online store with advanced product filtering and checkout",
-    category: "Web Development",
-    image:
-      "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
-    link: "#",
-    liveUrl: "#",
-  },
-  {
-    id: 3,
-    title: "Mobile App UI",
-    description: "Fitness tracking application with custom dashboard",
-    category: "UI/UX Design",
-    image:
-      "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
-    link: "#",
-    liveUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Restaurant Website",
-    description: "Modern responsive website with online reservations",
-    category: "Web Development",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    link: "#",
-  },
-  {
-    id: 5,
-    title: "Product Packaging",
-    description: "Eco-friendly packaging design for skincare line",
-    category: "Graphic Design",
-    image:
-      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
-    link: "#",
-  },
-];
 
 export default function PortfolioPage() {
   return (
@@ -52,7 +10,7 @@ export default function PortfolioPage() {
       style={{
         backgroundColor: "#ffffff",
         backgroundImage:
-          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")',
+          'url("https://www.transparenttextures.com/patterns/skeletal-weave.png")', 
       }}
     >
       <div className="container mx-auto px-4 max-w-7xl">
@@ -126,7 +84,7 @@ export default function PortfolioPage() {
                       </a>
                     )}
                     <a
-                      href={project.link}
+                      href={`/portfolio/${project.id}`}
                       className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
                       aria-label="View details"
                     >
