@@ -58,7 +58,7 @@ export function Navbar() {
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center">
               <span className="text-2xl font-bold bg-[#FB2056] bg-clip-text text-transparent">
-                DigitalApex
+                makeMagma
               </span>
             </Link>
             <nav className="hidden lg:flex items-center space-x-8">

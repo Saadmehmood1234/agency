@@ -78,7 +78,7 @@ export const connectMe = async (data: {
   message: string;
 }) => {
   const mailOptions = {
-    from: `"DigitalApex" <${process.env.SMTP_EMAIL}>`,
+    from: `"makeMagma" <${process.env.SMTP_EMAIL}>`,
     to: "mehmoodsaad347@gmail.com",
     subject: `New Inquiry from ${data.name}: ${data.subject}`,
     html: generateEmailHtml(data),
