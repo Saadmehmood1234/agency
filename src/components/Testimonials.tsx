@@ -6,7 +6,7 @@ export function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      name: "Ritik Koli",
+      name: "Saurav",
       role: "Marketing Director, TechCorp",
       content: "Their web development team transformed our online presence. Our traffic increased by 300% within 3 months!",
       rating: 5
