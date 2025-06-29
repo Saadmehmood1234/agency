@@ -138,7 +138,7 @@ export function Navbar() {
                     )}
                   </div>
                 ))}
-        
+
                 <button
                   onClick={() => setShowContact(!showContact)}
                   className="block cursor-pointer px-4 py-3 mt-4 bg-[#FB2056] text-white rounded-lg font-medium text-center"
